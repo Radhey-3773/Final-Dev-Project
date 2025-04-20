@@ -13,6 +13,9 @@ module.exports = {
         },
         animation: {
           float: 'float 3s ease-in-out infinite',
+        },
+        backgroundImage: {
+          'radial-gradient': 'radial-gradient(var(--tw-gradient-stops))',
         }
       },
     },

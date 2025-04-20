@@ -1,4 +1,6 @@
+import React from 'react';
 import { motion } from 'framer-motion';
+import posterImage from '../assets/poster.jpg';
 
 const Card = ({ card, isFaceUp = false, onClick }) => {
   const getCardColor = (suit) => {
@@ -21,7 +23,7 @@ const Card = ({ card, isFaceUp = false, onClick }) => {
       <div className="absolute w-full h-full">
         {isFaceUp ? (
           <motion.div 
-            className="w-full h-full bg-white rounded-xl shadow-2xl p-3 flex flex-col justify-between border-2 border-gray-200"
+            className="w-full h-full bg-white rounded-xl p-3 flex flex-col justify-between border-2 border-gray-200"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -48,14 +50,18 @@ const Card = ({ card, isFaceUp = false, onClick }) => {
           </motion.div>
         ) : (
           <motion.div 
-            className="w-full h-full rounded-xl shadow-2xl"
+            className="w-full h-full rounded-xl overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
+            style={{ 
+              transform: 'rotateY(180deg)',
+              backgroundImage: `url(${posterImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
           >
-            <div className="w-full h-full bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl border-4 border-white">
-              <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxsaW5lIHgxPSIwIiB5PSIwIiB4Mj0iMCIgeTI9IjQwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')] opacity-20 rounded-xl" />
-            </div>
+            <div className="absolute inset-0 bg-blue-600 bg-opacity-0" />
           </motion.div>
         )}
       </div>
